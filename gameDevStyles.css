@@ -1,0 +1,157 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: 'SUSE Mono', monospace;
+  box-sizing: border-box;
+}
+
+body {
+  background: url('computer.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: white;
+}
+
+/* Navbar */
+nav {
+  width: 100%;
+  height: 90px;
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: linear-gradient(rgba(73, 67, 67, 0.444), rgba(0,0,0,0.8));
+}
+
+.navbar a {
+  text-decoration: none;
+  padding: 10px 20px;
+  font-size: 20px;
+  color: white;
+  transition: 0.5s;
+}
+
+.navbar a:hover {
+  background-color: aqua;
+  color: black;
+  border-radius: 50ch;
+}
+
+.logo {
+  font-size: 2em;
+  letter-spacing: 2px;
+}
+
+/* Hero Section */
+header.hero {
+  text-align: center;
+  padding: 100px 20px;
+  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6));
+}
+
+header.hero h1 {
+  font-size: 42px;
+  margin-bottom: 20px;
+}
+
+header.hero p {
+  font-size: 18px;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Section Titles */
+section h2 {
+  text-align: center;
+  color: white;
+  padding: 50px 20px 20px 20px;
+  font-size: 32px;
+  letter-spacing: 1.2px;
+}
+
+/* Cards */
+.card-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+
+.card {
+  width: 500px;
+  height: 500px;
+  background: darkslategray;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  padding: 0; /* remove padding so image fits neatly */
+  overflow: hidden; /* ensures image and text stay inside */
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.card img {
+  width: 100%;
+  height: 60%; /* take up the top part of the card */
+  object-fit: cover; /* crop to fill while keeping proportions */
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+}
+
+.card-content {
+  flex: 1; /* take up remaining space */
+  padding: 20px;
+}
+
+.card-content h3 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: white;
+}
+
+.card-content p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: lightgray;
+}
+
+
+.card:hover .card-content h3,
+.card:hover .card-content p {
+  color: black;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 2rem 1rem;
+  background: #2b2b2b;
+  color: white;
+  margin-top: 5rem;
+}
+.exapic1
+{
+    height: 200px;
+    width: auto;
+}
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.5);
+  background-color: #ffffff;
+  color: black;
+}
+
+.card:hover img {
+  transform: scale(1.1);        /* zoom effect */
+  filter: brightness(0.85);     
+  transition: transform 0.5s ease, filter 0.5s ease;
+}
+
+.card:hover .card-content h3,
+.card:hover .card-content p {
+  color: black;
+}
