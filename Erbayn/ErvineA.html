@@ -76,12 +76,32 @@
       border-radius: 20px;
       font-size: 0.9rem;
     }
+    #quote-box {
+      background: #fff;
+      padding: 15px;
+      border-left: 4px solid green;
+      font-style: italic;
+      margin-top: 1rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
     footer {
       text-align: center;
       padding: 2rem 1rem;
       background: green;
       color: white;
       margin-top: 3rem;
+    }
+    button#new-quote {
+      margin-top: 10px;
+      background: green;
+      color: white;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button#new-quote:hover {
+      background: darkgreen;
     }
   </style>
 </head>
@@ -102,6 +122,10 @@
   <section id="about">
     <h2>About Me</h2>
     <p>Hello, I'm Ervine Kirby V. Argueza and I'm an undergraduate from Tarlac State University.</p>
+
+    <!-- Advice API goes here -->
+    <div id="quote-box">Loading advice...</div>
+    <button id="new-quote">Get New Advice</button>
   </section>
 
   <section id="projects">
@@ -117,7 +141,7 @@
       </div>
       <div class="card">
         <h3>Inventory System</h3>
-        <p>Created a inventory system as a project for school.</p>
+        <p>Created an inventory system as a project for school.</p>
       </div>
     </div>
   </section>
@@ -143,9 +167,30 @@
   </footer>
 
   <script>
-    window.onload = function() {
-      alert("What's up!");
-    };
-  </script>
+  // Alert example
+  window.onload = function() {
+    alert("What's up!");
+    getAdvice(); // fetch advice on page load
+  };
+
+  // Advice Slip API Fetch
+  function getAdvice() {
+    fetch("https://api.adviceslip.com/advice")
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById("quote-box").innerHTML =
+          `${data.slip.advice}`;
+      })
+      .catch(err => {
+        document.getElementById("quote-box").innerHTML =
+          "Failed to load advice.";
+      });
+  }
+
+  // Button event to get new advice
+  document.getElementById("new-quote").addEventListener("click", getAdvice);
+</script>
+
+
 </body>
 </html>
