@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Portfolio</title>
+
   <style>
     * {
       margin: 0;
@@ -86,8 +87,44 @@
       padding: 15px 0;
       margin-top: 40px;
     }
+
+    /* -- PROFILE CARD API STYLES -- */
+    .profile-card {
+      background: #fff;
+      padding: 25px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      max-width: 400px;
+      margin: 20px auto;
+    }
+
+    .profile-img {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 15px;
+      border: 3px solid #333;
+    }
+
+    .btn {
+      margin-top: 15px;
+      padding: 10px 20px;
+      border: none;
+      background: #333;
+      color: #fff;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .btn:hover {
+      background: #555;
+    }
   </style>
 </head>
+
 <body>
   <header>
     <h1>John Carlo Dela Cruz</h1>
@@ -95,45 +132,52 @@
     <nav>
       <a href="HomePage.html">Home</a>
       <a href="#about">About</a>
+      <a href="#profile">Profile API</a>
       <a href="#projects">Projects</a>
       <a href="#skills">Skills</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
 
+  <!-- ABOUT SECTION -->
   <section id="about">
     <h2>About Me</h2>
-    <p>Hello, my name is John Carlo, an Information Technology student who has developed different applications and databases as a part of my learning and project works. All these works allowed me to combine my expertise in programming, web development, and problem-solving and have some experience with using technology to offer viable solutions.
-</p>
+    <p>Hello, my name is John Carlo, an Information Technology student who has developed different applications and databases as a part of my learning and project works. These works allowed me to combine my expertise in programming, web development, and problem-solving, gaining real experience in creating technological solutions.</p>
   </section>
 
-  <section id="projects">
-    <h2>Projects</h2>
-    <div class="projects">
-      <div class="card">
-        <h3>AcaGenie</h3>
-        <p>A smart study planner powered by AI, which adjusts the schedules dynamically depending on the progress of the student, the complexity of the course, and their fatigue to enhance focus, retention and academic performance. </p>
-      </div>
-      <div class="card">
-        <h3>Tierra De La Musica</h3>
-        <p>The Tierra De La Musica project involves designing and developing a dynamic
-website for promoting upcoming music festivals. Originally, it was intended to promote
-per client commission, but it was then decided to be open to multiple clients and in this
-presentation, it specifically promotes the upcoming Coachella 2025.
-</p>
-      </div>
-      <div class="card">
-        <h3>Planet Fitness Gym</h3>
-        <p>Planet Fitness is an American Franchisor and operator of
-fitness centers or gym. The company has around 2,400
-clubs and 17 million members around the globe, making
-them one of the biggest gym chains in the world. Planet
-fitness offers state of the art gym equipment at affordable
-prices and a non-intimidating environment</p>
-      </div>
+  <!-- PROFILE CARD API SECTION -->
+  <section id="profile">
+    <h2>Featured Profile (API)</h2>
+    <div class="profile-card" id="profile-card">
+      <p>Loading profile...</p>
     </div>
   </section>
 
+  <!-- PROJECTS -->
+  <section id="projects">
+    <h2>Projects</h2>
+
+    <div class="projects">
+
+      <div class="card">
+        <h3>AcaGenie</h3>
+        <p>A smart study planner powered by AI, dynamically adjusting schedules based on progress and course complexity.</p>
+      </div>
+
+      <div class="card">
+        <h3>Tierra De La Musica</h3>
+        <p>A dynamic music festival promotion website, showcasing the upcoming Coachella 2025 event.</p>
+      </div>
+
+      <div class="card">
+        <h3>Planet Fitness Gym</h3>
+        <p>A concept website for Planet Fitness, one of the largest gym chains with 17 million members worldwide.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SKILLS -->
   <section id="skills" class="skills">
     <h2>Skills</h2>
     <ul>
@@ -144,21 +188,44 @@ prices and a non-intimidating environment</p>
     </ul>
   </section>
 
+  <!-- CONTACT -->
   <section id="contact">
     <h2>Contact</h2>
     <p>Email: <a href="mailto:johncarlodelacruz323@gmail.com">johncarlodelacruz323@gmail.com</a></p>
     <p>GitHub: <a href="https://github.com/jzra1" target="_blank">github.com/jzra1</a></p>
-    <p>LinkedIn: <a href="https://www.linkedin.com/in/john-carlo-dela-cruz-7a4291387/" target="_blank">https://www.linkedin.com/in/john-carlo-dela-cruz-7a4291387/</a></p>
+    <p>LinkedIn: <a href="https://www.linkedin.com/in/john-carlo-dela-cruz-7a4291387/" target="_blank">linkedin.com/in/john-carlo-dela-cruz-7a4291387</a></p>
   </section>
 
   <footer>
     <p>© 2025 John Carlo Dela Cruz. All Rights Reserved.</p>
   </footer>
 
+  <!-- API SCRIPT -->
   <script>
-    window.onload = function() {
-      alert("Hello there!");
-    };
+    async function loadProfile() {
+      const card = document.getElementById("profile-card");
+
+      try {
+        const response = await fetch("https://randomuser.me/api/");
+        const data = await response.json();
+        const user = data.results[0];
+
+        card.innerHTML = `
+          <img src="${user.picture.large}" class="profile-img">
+          <h2>${user.name.first} ${user.name.last}</h2>
+          <p><strong>Email:</strong> ${user.email}</p>
+          <p><strong>Phone:</strong> ${user.phone}</p>
+          <p><strong>Country:</strong> ${user.location.country}</p>
+          <button class="btn" onclick="loadProfile()">Load Another Profile</button>
+        `;
+      } catch (error) {
+        card.innerHTML = "<p>Failed to load profile.</p>";
+        console.error(error);
+      }
+    }
+
+    window.onload = loadProfile;
   </script>
+
 </body>
 </html>
