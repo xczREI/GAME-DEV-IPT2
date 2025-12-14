@@ -7,7 +7,7 @@
   <style>
     :root {
       --primary: #4a90e2;
-      --dark: blue   ;
+      --dark: blue;
       --light: #f4f4f9;
       --text: #333;
     }
@@ -90,8 +90,14 @@
     }
 
     .projects {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+
+    .project-row {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 25px;
     }
 
@@ -165,28 +171,41 @@
     </nav>
   </header>
 
-<section id="about">
-  <h2>About Me</h2>
-  <p>
-    I am Dean Villanueva, a dedicated Web and Mobile Application Developer with a strong foundation in designing and building innovative solutions. My work spans across web platforms, mobile applications, and game development, where I combine creativity with technical expertise to deliver engaging and impactful digital experiences. I take pride in creating projects that not only address real-world challenges but also provide users with intuitive and enjoyable interactions.
-  </p>
-</section>
-
+  <section id="about">
+    <h2>About Me</h2>
+    <p>
+      I am Dean Villanueva, a dedicated Web and Mobile Application Developer with a strong foundation in designing and building innovative solutions. My work spans across web platforms, mobile applications, and game development, where I combine creativity with technical expertise to deliver engaging and impactful digital experiences. I take pride in creating projects that not only address real-world challenges but also provide users with intuitive and enjoyable interactions.
+    </p>
+  </section>
 
   <section id="projects">
     <h2>Projects</h2>
     <div class="projects">
-      <div class="card">
-        <h3>ColleGo</h3>
-        <p>A mobile and web app that helps college students find essential services such as food, printing, and travel spots.</p>
+      <!-- Row of first three project cards -->
+      <div class="project-row">
+        <div class="card">
+          <h3>ColleGo</h3>
+          <p>A mobile and web app that helps college students find essential services such as food, printing, and travel spots.</p>
+        </div>
+        <div class="card">
+          <h3>Expedition of the Thousand’s Shores</h3>
+          <p>A turn-based educational RPG about the Battle of Mactan, designed to engage students in learning Philippine history.</p>
+        </div>
+        <div class="card">
+          <h3>Cloud9 Players Database</h3>
+          <p>A database project showcasing structured data management and query handling for esports players.</p>
+        </div>
       </div>
-      <div class="card">
-        <h3>Expedition of the Thousand’s Shores</h3>
-        <p>A turn-based educational RPG about the Battle of Mactan, designed to engage students in learning Philippine history.</p>
-      </div>
-      <div class="card">
-        <h3>Cloud9 Players Database</h3>
-        <p>A database project showcasing structured data management and query handling for esports players.</p>
+
+      <!-- Chess API card spanning full width -->
+      <div class="card" style="width:100%;">
+        <h3>Chess API Tool</h3>
+        <p>Analyze any chess position using the Chess API.</p>
+        <input type="text" id="fenInput" placeholder="Enter FEN string" 
+               value="rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
+               style="width:100%;padding:10px;margin-top:10px;border-radius:5px;border:1px solid #ccc;">
+        <button id="analyzeBtn" style="margin-top:10px;padding:12px 25px;background:var(--primary);border:none;border-radius:6px;color:#fff;font-weight:bold;cursor:pointer;">Analyze Position</button>
+        <pre id="resultDisplay" style="margin-top:15px;background:#f0f0f0;padding:10px;border-radius:8px;font-size:0.85rem;white-space:pre-wrap;"></pre>
       </div>
     </div>
   </section>
@@ -218,6 +237,33 @@
     window.onload = function() {
       alert("Hey There!");
     };
+
+    // Chess API analyze button
+    document.getElementById('analyzeBtn').addEventListener('click', () => {
+      const fen = document.getElementById('fenInput').value.trim();
+      const resultDisplay = document.getElementById('resultDisplay');
+
+      if (!fen) {
+        alert("Please enter a valid FEN string!");
+        return;
+      }
+
+      resultDisplay.textContent = "Analyzing...";
+
+      fetch('https://chess-api.com/v1', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ fen })
+      })
+      .then(res => res.json())
+      .then(data => {
+        resultDisplay.textContent = JSON.stringify(data, null, 2);
+      })
+      .catch(err => {
+        console.error(err);
+        resultDisplay.textContent = "Error fetching data from Chess API";
+      });
+    });
   </script>
 </body>
 </html>
