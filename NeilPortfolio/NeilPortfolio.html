@@ -17,40 +17,24 @@
       text-align: center;
       padding: 2rem 1rem;
     }
-    header h1 {
-      margin: 0;
-      font-size: 1.8rem;
-    }
-    header p {
-      margin: 0.5rem 0;
-      font-size: 1rem;
-      color: #ccc;
-    }
-    nav {
-      margin-top: 0.5rem;
-    }
+    header h1 { margin: 0; font-size: 1.8rem; }
+    header p { margin: 0.5rem 0; font-size: 1rem; color: #ccc; }
+    nav { margin-top: 0.5rem; }
     nav a {
       margin: 0 10px;
       color: #6aa6ff;
       text-decoration: none;
       font-size: 0.9rem;
     }
-    nav a:hover {
-      text-decoration: underline;
-    }
-    section {
-      max-width: 900px;
-      margin: 3rem auto;
-      padding: 0 1rem;
-    }
-    h2 {
-      margin-bottom: 1rem;
-    }
+    nav a:hover { text-decoration: underline; }
+    section { max-width: 900px; margin: 3rem auto; padding: 0 1rem; }
+    h2 { margin-bottom: 1rem; }
     .projects {
       display: flex;
       flex-wrap: wrap;
       gap: 1rem;
     }
+    /* Normal project card */
     .card {
       flex: 1 1 calc(33% - 1rem);
       background: white;
@@ -58,15 +42,30 @@
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
       padding: 1rem;
       min-width: 250px;
+      transition: transform 0.2s, box-shadow 0.2s;
     }
-    .card h3 {
-      margin-top: 0;
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
-    .skills {
+    .card h3 { margin-top: 0; }
+    /* Anime-specific card */
+    .anime-card-custom {
+      flex: 1 1 100%; /* Full width */
       display: flex;
-      gap: 0.5rem;
-      flex-wrap: wrap;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      background: #ffeedd;
+      border: 2px solid #d79a6c;
+      padding: 1rem;
     }
+    .anime-card-custom img {
+      max-width: 100%;
+      border-radius: 8px;
+      margin: 10px 0;
+    }
+    .skills { display: flex; gap: 0.5rem; flex-wrap: wrap; }
     .skill-tag {
       background: brown;
       color: white;
@@ -74,6 +73,18 @@
       border-radius: 20px;
       font-size: 0.9rem;
     }
+    button {
+      background: brown;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 0.5rem;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+    button:hover { background: #5a0000; }
     footer {
       text-align: center;
       padding: 2rem 1rem;
@@ -85,66 +96,110 @@
 </head>
 <body>
 
-  <header>
-    <h1>NEIL LAWRENCE M. AQUINO</h1>
-    <p>Game Art Designer and Front End Developer</p>
-    <nav>
-      <a href="HomePage.html">Home</a>
-      <a href="#about">About</a>
-      <a href="#projects">Projects</a>
-      <a href="#skills">Skills</a>
-      <a href="#contact">Socials</a>
-    </nav>
-  </header>
+<header>
+  <h1>NEIL LAWRENCE M. AQUINO</h1>
+  <p>Game Art Designer and Front End Developer</p>
+  <nav>
+    <a href="HomePage.html">Home</a>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Socials</a>
+  </nav>
+</header>
 
-  <section id="about">
-    <h2>About Me</h2>
-    <p>Hello, I'm Neil Lawrence M. Aquino and I'm an undergraduate from Tarlac State University.</p>
-  </section>
+<section id="about">
+  <h2>About Me</h2>
+  <p>Hello, I'm Neil Lawrence M. Aquino and I'm an undergraduate from Tarlac State University.</p>
+</section>
 
-  <section id="projects">
-    <h2>Projects</h2>
-    <div class="projects">
-      <div class="card">
-        <h3>RPG Game Art Design</h3>
-        <p>Designing the art for our RPG-game based about historical figures like Lapu-Lapu and Magellan.</p>
-      </div>
-      <div class="card">
-        <h3>Calculator</h3>
-        <p>A calculator developed by using HTML, CSS, and JavaScript.</p>
-      </div>
-      <div class="card">
-        <h3>MOBA Game</h3>
-        <p>Creating a unique 5v5 moba game about HTML, CSS, and JavaScript.</p>
-      </div>
+<section id="projects">
+  <h2>Projects</h2>
+  <div class="projects">
+    <div class="card">
+      <h3>RPG Game Art Design</h3>
+      <p>Designing the art for our RPG-game based on historical figures like Lapu-Lapu and Magellan.</p>
     </div>
-  </section>
-
-  <section id="skills">
-    <h2>Skills</h2>
-    <div class="skills">
-      <span class="skill-tag">Aseprite</span>
-      <span class="skill-tag">HTML, CSS, JS</span>
-      <span class="skill-tag">Figma</span>
+    <div class="card">
+      <h3>Calculator</h3>
+      <p>A calculator developed using HTML, CSS, and JavaScript.</p>
     </div>
-  </section>
+    <div class="card">
+      <h3>MOBA Game</h3>
+      <p>Creating a unique 5v5 MOBA game using HTML, CSS, and JavaScript.</p>
+    </div>
+    <!-- Jikan API Card -->
+    <div class="card anime-card-custom" id="anime-card">
+      <h3>Anime Info (Using Jikan)</h3>
+      <p>Random anime info (image, title, episodes, score, synopsis)</p>
+      <button id="get-anime">Get Random Anime</button>
+      <img id="anime-img" src="" alt="" style="display:none;">
+      <div id="anime-info"></div>
+    </div>
+  </div>
+</section>
 
-  <section id="contact">
-    <h2>Socials</h2>
-    <p>Email: <strong>neilaquino292004@gmail.com</strong></p>
-    <p>Instagram: <strong>instagram.com/uramiiixd</strong></p>
-    <p>Facebook: <strong>facebook.com/Neil.Aquino</strong></p>
-  </section>
+<section id="skills">
+  <h2>Skills</h2>
+  <div class="skills">
+    <span class="skill-tag">Aseprite</span>
+    <span class="skill-tag">HTML, CSS, JS</span>
+    <span class="skill-tag">Figma</span>
+  </div>
+</section>
 
-  <footer>
-    <p>&copy; 2025 Neil Aquino. All rights reserved.</p>
-  </footer>
+<section id="contact">
+  <h2>Socials</h2>
+  <p><strong>neilaquino292004@gmail.com</strong></p>
+  <p><strong>instagram.com/uramiiixd</strong></p>
+  <p><strong>facebook.com/Neil.Aquino</strong></p>
+</section>
 
-  <script>
-    window.onload = function() {
-      alert("Welcome!");
-    };
-  </script>
+<footer>
+  <p>&copy; 2025 Neil Aquino. All rights reserved.</p>
+</footer>
+
+<script>
+const btn = document.getElementById('get-anime');
+const animeImg = document.getElementById('anime-img');
+const animeInfoDiv = document.getElementById('anime-info');
+
+async function fetchRandomAnime() {
+  try {
+    const topRes = await fetch('https://api.jikan.moe/v4/top/anime');
+    if (!topRes.ok) throw new Error(`Top anime fetch failed: ${topRes.status}`);
+    const topData = await topRes.json();
+    const list = topData.data;
+
+    const random = list[Math.floor(Math.random() * list.length)];
+    const animeId = random.mal_id;
+
+    const detailRes = await fetch(`https://api.jikan.moe/v4/anime/${animeId}`);
+    if (!detailRes.ok) throw new Error(`Anime detail fetch failed: ${detailRes.status}`);
+    const detailData = await detailRes.json();
+    const anime = detailData.data;
+
+    if (anime.images?.jpg?.image_url) {
+      animeImg.src = anime.images.jpg.image_url;
+      animeImg.style.display = 'block';
+    } else animeImg.style.display = 'none';
+
+    animeInfoDiv.innerHTML = `
+      <p><strong>Title:</strong> ${anime.title}</p>
+      <p><strong>Episodes:</strong> ${anime.episodes ?? 'N/A'}</p>
+      <p><strong>Score:</strong> ${anime.score ?? 'N/A'}</p>
+      <p><strong>Synopsis:</strong> ${anime.synopsis ?? 'No synopsis available.'}</p>
+    `;
+  } catch (err) {
+    console.error(err);
+    animeInfoDiv.textContent = `Error: ${err.message}`;
+    animeImg.style.display = 'none';
+  }
+}
+
+window.addEventListener('load', fetchRandomAnime);
+btn.addEventListener('click', fetchRandomAnime);
+</script>
+
 </body>
 </html>
-
