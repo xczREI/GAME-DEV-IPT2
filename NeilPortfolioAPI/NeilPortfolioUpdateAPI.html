@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neil's Portfolio</title>
+  <style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f5f5fa;
+    color: #222;
+  }
+
+  header {
+    min-height: 100vh;
+    background:
+      linear-gradient(rgba(90,0,0,0.75), rgba(60,0,0,0.75)),
+      url("https://images.unsplash.com/photo-1517694712202-14dd9538aa97");
+    background-size: cover;
+    background-position: center;
+
+    color: white;
+    text-align: center;
+    padding: 60px 20px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* NAVBAR NEW STYLE */
+  nav a {
+    margin: 0 10px;
+    padding: 5px 8px;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    position: relative;
+  }
+
+  nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 0%;
+    height: 3px;
+    background: white;
+    transition: 0.3s;
+  }
+
+  nav a:hover::after {
+    width: 100%;
+  }
+
+  nav a:hover {
+    color: #ffe0e0;
+  }
+
+  section { max-width: 900px; margin: 3rem auto; padding: 0 1rem; }
+  h2 { margin-bottom: 1rem; }
+
+  /* ABOUT SECTION PHOTO ADDED */
+  .about-box {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .about-box img {
+    width: 220px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 15px;
+    border: 3px solid brown;
+  }
+
+  .projects {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .card {
+    flex: 1 1 calc(33% - 1rem);
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    padding: 1rem;
+    min-width: 250px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  }
+
+  .card h3 { margin-top: 0; }
+
+  .anime-card-custom {
+    flex: 1 1 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background: #ffeedd;
+    border: 2px solid #d79a6c;
+    padding: 1rem;
+  }
+
+  .anime-card-custom img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin: 10px 0;
+  }
+
+  .skills { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+
+  .skill-tag {
+    background: brown;
+    color: white;
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+  }
+
+  button {
+    background: brown;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    font-weight: bold;
+    transition: background 0.3s;
+  }
+
+  button:hover { background: #5a0000; }
+
+  footer {
+    text-align: center;
+    padding: 2rem 1rem;
+    background: brown;
+    color: white;
+    margin-top: 3rem;
+  }
+</style>
+
+</head>
+<body>
+
+<header>
+  <h1>NEIL LAWRENCE M. AQUINO</h1>
+  <p>Game Art Designer and Front End Developer</p>
+  <nav>
+    <a href="HomePage.html">Home</a>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Socials</a>
+  </nav>
+</header>
+
+<section id="about">
+  <h2>About Me</h2>
+
+  <div class="about-box">
+    <img src="neilly.jpg" alt="Profile Image">
+
+    <p>
+      Hello, I'm <strong>Neil Lawrence M. Aquino</strong> and I'm an undergraduate from Tarlac State University.
+      <br><br>
+      I specialize in game art, front-end development, and interactive web design.
+    </p>
+  </div>
+</section>
+
+
+<section id="projects">
+  <h2>Projects</h2>
+  <div class="projects">
+    <div class="card">
+      <h3>RPG Game Art Design</h3>
+      <p>Designing the art for our RPG-game based on historical figures like Lapu-Lapu and Magellan.</p>
+    </div>
+    <div class="card">
+      <h3>Calculator</h3>
+      <p>A calculator developed using HTML, CSS, and JavaScript.</p>
+    </div>
+    <div class="card">
+      <h3>MOBA Game</h3>
+      <p>Creating a unique 5v5 MOBA game using HTML, CSS, and JavaScript.</p>
+    </div>
+    <!-- Jikan API Card -->
+    <div class="card anime-card-custom" id="anime-card">
+      <h3>Anime Info (Using Jikan)</h3>
+      <p>Random anime info (image, title, episodes, score, synopsis)</p>
+      <button id="get-anime">Get Random Anime</button>
+      <img id="anime-img" src="" alt="" style="display:none;">
+      <div id="anime-info"></div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <h2>Skills</h2>
+  <div class="skills">
+    <span class="skill-tag">Aseprite</span>
+    <span class="skill-tag">HTML, CSS, JS</span>
+    <span class="skill-tag">Figma</span>
+  </div>
+</section>
+
+<section id="contact">
+  <h2>Socials</h2>
+  <p><strong>neilaquino292004@gmail.com</strong></p>
+  <p><strong>instagram.com/uramiiixd</strong></p>
+  <p><strong>facebook.com/Neil.Aquino</strong></p>
+</section>
+
+<footer>
+  <p>&copy; 2025 Neil Aquino. All rights reserved.</p>
+</footer>
+
+<script>
+const btn = document.getElementById('get-anime');
+const animeImg = document.getElementById('anime-img');
+const animeInfoDiv = document.getElementById('anime-info');
+
+async function fetchRandomAnime() {
+  try {
+    const topRes = await fetch('https://api.jikan.moe/v4/top/anime');
+    if (!topRes.ok) throw new Error(`Top anime fetch failed: ${topRes.status}`);
+    const topData = await topRes.json();
+    const list = topData.data;
+
+    const random = list[Math.floor(Math.random() * list.length)];
+    const animeId = random.mal_id;
+
+    const detailRes = await fetch(`https://api.jikan.moe/v4/anime/${animeId}`);
+    if (!detailRes.ok) throw new Error(`Anime detail fetch failed: ${detailRes.status}`);
+    const detailData = await detailRes.json();
+    const anime = detailData.data;
+
+    if (anime.images?.jpg?.image_url) {
+      animeImg.src = anime.images.jpg.image_url;
+      animeImg.style.display = 'block';
+    } else animeImg.style.display = 'none';
+
+    animeInfoDiv.innerHTML = `
+      <p><strong>Title:</strong> ${anime.title}</p>
+      <p><strong>Episodes:</strong> ${anime.episodes ?? 'N/A'}</p>
+      <p><strong>Score:</strong> ${anime.score ?? 'N/A'}</p>
+      <p><strong>Synopsis:</strong> ${anime.synopsis ?? 'No synopsis available.'}</p>
+    `;
+  } catch (err) {
+    console.error(err);
+    animeInfoDiv.textContent = `Error: ${err.message}`;
+    animeImg.style.display = 'none';
+  }
+}
+
+window.addEventListener('load', fetchRandomAnime);
+btn.addEventListener('click', fetchRandomAnime);
+</script>
+
+</body>
+</html>
