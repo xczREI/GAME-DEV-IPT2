@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luke Reed's Portfolio</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f5f5fa;
+      color: #222;
+    }
+    header {
+  min-height: 100vh;
+  background:
+    linear-gradient(rgba(120,0,0,0.75), rgba(180,0,0,0.75)),
+    url("cat.jpg");
+  background-size: cover;
+  background-position: center;
+
+  color: white;
+  text-align: center;
+  padding: 60px 20px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+    header h1 {
+      margin: 0;
+      font-size: 1.8rem;
+    }
+    header p {
+      margin: 0.5rem 0;
+      font-size: 1rem;
+      color: #ccc;
+    }
+
+        /* ===== ABOUT SECTION WITH PROFILE IMAGE ===== */
+#about {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* centers image + text together */
+  gap: 50px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Profile Image (left side) */
+#about::before {
+  content: "";
+  width: 260px;
+  height: 260px;
+  border-radius: 18px;
+  background-image: url("king.jpg");
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+  flex-shrink: 0;
+}
+    nav {
+      margin-top: 0.5rem;
+      
+    }
+    nav a {
+      margin: 0 10px;
+      color: white;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    section {
+      max-width: 900px;
+      margin: 3rem auto;
+      padding: 0 1rem;
+    }
+    h2 {
+      margin-bottom: 1rem;
+    }
+    .projects {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .card {
+      flex: 1 1 calc(33% - 1rem);
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      padding: 1rem;
+      min-width: 250px;
+    }
+    .card h3 {
+      margin-top: 0;
+    }
+    /* Make only Harvard API card stretch */
+    #harvard-card {
+      flex: 1 1 100%;
+    }
+    .skills {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .skill-tag {
+      background: red;
+      color: white;
+      padding: 0.4rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      background: red;
+      color: white;
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>LUKE REED CHARD R. MENDOZA</h1>
+    <p>Game Developer and Front-end Developer</p>
+    <nav>
+      <a href="HomePage.html">Home</a>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p>Hi! My name is <b>Luke Reed Chard R. Mendoza</b>, an undergraduate student currently studying at Tarlac State University. I love arts, I was born to be an artist
+        but as time goes on, I found myself liking game development and I have hands-on experience in game development, creating games using <b>RPG Maker</b> and <b>Ren’Py</b>. I love exploring game design,
+         experimenting with storytelling, and bringing my creative ideas to life through interactive experiences.
+
+        Outside of development, I’m a huge fan of video games especially <b>Pokémon</b>, which has been a big inspiration for me. 
+        My ultimate goal is to become a well-rounded game developer, focusing entirely on creating games as my career. 
+        I dream of building unique projects that not only 
+        entertain but also achieve success, allowing me to make a living doing what I love.</p>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="projects">
+      <div class="card">
+        <h3>RPG Game</h3>
+        <p>An RPG-game based on famous and historical figures like Lapu-Lapu and Magellan.</p>
+      </div>
+      <div class="card">
+        <h3>Novel</h3>
+        <p>A novel game that teaches players Python programming language</p>
+      </div>
+      <div class="card">
+        <h3>MOBA Game</h3>
+        <p>5v5 MOBA game where programming languages battle for control of the base</p>
+      </div>
+      <div class="card" id="harvard-card">
+        <h3>Harvard Art API</h3>
+        <p>Discover art objects from the Harvard Art Museums API:</p>
+        <button id="load-art">Load Art</button>
+        <ul id="art-list"></ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="skills">
+      <span class="skill-tag">RPG Maker MV</span>
+      <span class="skill-tag">Narrative Design</span>
+      <span class="skill-tag">HTML</span>
+      <span class="skill-tag">CSS</span>
+      <span class="skill-tag">Javascript</span>
+      <span class="skill-tag">Python</span>
+      <span class="skill-tag">Figma</span>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Socials</h2>
+    <p>Email: <strong>LukediabloImmortal@gmail.com</strong></p>
+    <p>Instagram: <strong>https://www.instagram.com/lukrid4el/</strong></p>
+    <p>Facebook: <strong>https://www.facebook.com/ayeeeLukeee/</strong></p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Luke Reed. All rights reserved.</p>
+  </footer>
+
+  <script>
+    window.onload = function() {
+      alert("Hello!");
+    };
+  </script>
+
+  <script>
+  const apiKey = "d1c34852-9069-4009-84e2-dcd1000abee7";
+  const loadButton = document.getElementById("load-art");
+  const artList = document.getElementById("art-list");
+
+  loadButton.addEventListener("click", async () => {
+    artList.innerHTML = "<li>Loading...</li>";
+    try {
+      const response = await fetch(`https://api.harvardartmuseums.org/object?apikey=${apiKey}&size=5`);
+      const data = await response.json();
+
+      artList.innerHTML = ""; // clear loading text
+
+      data.records.forEach(item => {
+        const li = document.createElement("li");
+        li.innerHTML = `<strong>${item.title || "Untitled"}</strong> - <em>${item.people ? item.people.map(p => p.name).join(", ") : "Unknown Artist"}</em>`;
+        artList.appendChild(li);
+      });
+    } catch (error) {
+      artList.innerHTML = "<li>Failed to load art data.</li>";
+      console.error(error);
+    }
+  });
+  </script>
+
+</body>
+</html>
